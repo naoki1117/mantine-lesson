@@ -18,68 +18,13 @@ export const DashBord = () => {
             <Center>
                 <Menu trigger="hover" size="xl">
                     <Menu.Label>UI Components</Menu.Label>
-                    <Menu.Item
-                        icon={<Settings size={16} />}
-                        component={NextLink}
-                        href="/button"
-                    >
-                        Button
-                    </Menu.Item>
-                    <Menu.Item
-                        icon={<Settings size={16} />}
-                        component={NextLink}
-                        href="/grid"
-                    >
-                        Grid
-                    </Menu.Item>
-                    <Menu.Item
-                        icon={<Settings size={16} />}
-                        component={NextLink}
-                        href="/group"
-                    >
-                        Group
-                    </Menu.Item>
-                    <Menu.Item
-                        icon={<Settings size={16} />}
-                        component={NextLink}
-                        href="/multi-select"
-                    >
-                        Multi-Select
-                    </Menu.Item>
-                    <Menu.Item
-                        icon={<Settings size={16} />}
-                        component={NextLink}
-                        href="/fetch-api"
-                    >
-                        Data Loader
-                    </Menu.Item>
-                    <Menu.Item
-                        icon={<Settings size={16} />}
-                        component={NextLink}
-                        href="/dialog"
-                    >
-                        Dialog
-                    </Menu.Item>
-                    <Menu.Item
-                        icon={<Settings size={16} />}
-                        component={NextLink}
-                        href="/modal"
-                    >
-                        Modal
-                    </Menu.Item>
-                    <Menu.Item
-                        icon={<Settings size={16} />}
-                        component={NextLink}
-                        href="/avatar"
-                    >
-                        Avatar
-                    </Menu.Item>
+                    
                     <Menu.Item
                         icon={<Settings size={16} />}
                         component={NextLink}
                         href="/card"
                     >
-                        Card
+                        PictureCard
                     </Menu.Item>
                     <Menu.Item
                         icon={<Settings size={16} />}
@@ -93,7 +38,7 @@ export const DashBord = () => {
                         component={NextLink}
                         href="/table"
                     >
-                        Table
+                        TaskTable
                     </Menu.Item>
                     <Menu.Item
                         icon={<Settings size={16} />}
@@ -101,13 +46,6 @@ export const DashBord = () => {
                         href="/crypto"
                     >
                         Crypto
-                    </Menu.Item>
-                    <Menu.Item
-                        icon={<Settings size={16} />}
-                        component={NextLink}
-                        href="/notification"
-                    >
-                        Notification
                     </Menu.Item>
                     <Menu.Item
                         icon={<Settings size={16} />}

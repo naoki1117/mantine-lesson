@@ -24,7 +24,7 @@ const schema = Yup.object().shape({
         .matches(/[a-z]+/,"One lowercase char missing")
         .matches(/[A-Z]+/,"One uppercase char missing")
         .matches(/[@$!%*#?&]+/,"One special char missing"),
-    age:Yup.number().min(15,"Only over 15 for new account"),
+    // age:Yup.number().min(15,"Only over 15 for new account"),
 
 })
 
@@ -37,7 +37,7 @@ export const Auth = () => {
         initialValues:{
             email:"",
             password:"",
-            age:15,
+            // age:15,
         },
     })
     const handleSubmit = async () => {
@@ -96,7 +96,7 @@ export const Auth = () => {
                     
                     
                     />
-                    {isRegister && (
+                    {/* {isRegister && (
                         <NumberInput 
                             mt="md"
                             id="age"
@@ -105,7 +105,7 @@ export const Auth = () => {
                             {...form.getInputProps("age")}
                                           
                         />
-                    )}
+                    )} */}
                     <Group mt="lg" position="apart">
                         <Anchor
                             component="button"

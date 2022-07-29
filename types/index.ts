@@ -3,7 +3,7 @@ import { type } from "os"
 export type Form = {
     email: string
     password: string
-    age: number
+    // age: number
 }
 export type Todo = {
     id: number
