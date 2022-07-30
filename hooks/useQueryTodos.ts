@@ -20,5 +20,6 @@ export const useQueryTodos = () => {
     return useQuery<Todo[]>({
         queryKey: ["todos"],
         queryFn: getTodos,
+        staleTime:Infinity
     })
 }

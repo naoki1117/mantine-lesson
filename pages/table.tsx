@@ -1,10 +1,33 @@
 import Link from "next/link"
-import { Table,Container,Loader,Center } from "@mantine/core"
-import { ReplyIcon } from "@heroicons/react/solid"
+import { Table,Container,Loader,Center,TextInput } from "@mantine/core"
+import { PencilAltIcon, ReplyIcon } from "@heroicons/react/solid"
 import { Layout } from "../components/Layout"
 import { useQueryTodos } from "../hooks/useQueryTodos"
+import useStore from "../store"
+import { useMutateTodo } from "../hooks/useMutateTodo"
+import { FormEvent } from "react"
+import { supabase } from "../utills/supabase"
 
 const TableDemo = () => {
+    const {deleteTodoMutation} = useMutateTodo()
+    const {editedTodo} =useStore()
+    const update = useStore((state) => state.updateEditedTodo)
+    const {createTodoMutation,updateTodoMutation} =useMutateTodo()
+    const submitHandler = (e:FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        if(editedTodo.id === 0)
+            createTodoMutation.mutate({
+                title:editedTodo.title,
+                user_id:supabase.auth.user()?.id,
+            })
+        else {
+            updateTodoMutation.mutate({
+                id:editedTodo.id,
+                title:editedTodo.title,
+            })
+        }
+        
+    }
     const {data,status} = useQueryTodos()
     const rows =data?.map((element) => (
         <tr key={element.id}>
@@ -23,6 +46,20 @@ const TableDemo = () => {
         )
   return (
     <Layout title="Table">
+        <Center>
+            <form onSubmit={submitHandler} >
+                <input
+                    type="text"
+                    className="my-2 rounded border border-gray-300 px-3 py-2 text-sm placeholder-gray-500 focus:border-indigo-500"
+                    placeholder="New Task"
+                    value={editedTodo.title}
+                    onChange={(e) => update({...editedTodo,title:e.target.value})}
+                />
+                <button className="ml-2 rounded bg-indigo-600 px-3 py-2 text-sm font-medium text-white hover:bg-indigo-700">
+                    {editedTodo.id ? "update" : "create"}
+                </button>
+            </form>
+        </Center>
         <Container>
             <Table
                 striped
@@ -40,6 +77,7 @@ const TableDemo = () => {
                     </tr>
                 </thead>
                 <tbody>{rows}</tbody>
+
             </Table>
         </Container>
         <Center>

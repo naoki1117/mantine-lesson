@@ -1,5 +1,6 @@
 import { FC } from "react"
 import {Card,Image,Text,Badge,Button,Group } from "@mantine/core"
+import { supabase } from "../utills/supabase";
 
 type Props = {
     title: string
@@ -10,6 +11,14 @@ type Props = {
 
 
 export const CustomCard:FC<Props> = ({title,content,status,postUrl}) => {
+
+  const pictureDelete = async (id:number) => {
+    const { data,error } = await supabase.from("posts").delete().eq(id,"id")
+    if(error) throw new Error(error.message)
+    return data
+  }
+
+
   return (
 
     <Card shadow="md">
@@ -28,7 +37,7 @@ export const CustomCard:FC<Props> = ({title,content,status,postUrl}) => {
         </Badge>
       </Group>
       <Text size="sm">{content}</Text>
-      <Button mt="md" size="xs" variant="light" color="indigo" fullWidth>
+      <Button mt="md" size="xs" variant="light" color="indigo" fullWidth onClick={()=>pictureDelete} >
         subscribe
       </Button>
     </Card>

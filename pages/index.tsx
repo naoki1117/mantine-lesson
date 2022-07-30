@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { useEffect } from 'react'
 import { supabase } from '../utills/supabase'
-import useStore from '../store'
+import useStore from '../store/index'
 import { Auth } from '../components/Auth'
 import { DashBord } from '../components/DashBord'
 

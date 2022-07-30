@@ -9,6 +9,7 @@ export type Todo = {
     id: number
     created_at: string
     title: string
+    user_id:string | undefined
 }
 export type AuthForm = {
     firstName: string
@@ -36,3 +37,4 @@ export type Performance = {
     user_id:string
     level:number
 }
+export type EditedTodo = Omit<Todo,"created_at" | "user_id">
