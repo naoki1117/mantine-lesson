@@ -20,7 +20,7 @@ import { supabase } from "../utills/supabase"
 import { Layout } from "../components/Layout"
 import { CustomCard } from "../components/CustomCard"
 import { useQueryPosts } from "../hooks/useQueryPosts"
-
+import { useHover } from "@mantine/hooks"
 
 const schema = Yup.object().shape({
   title:Yup.string().required("No title provided"),
@@ -33,7 +33,6 @@ const PostList = () => {
   const {data} = useQueryPosts()
   const [isLoading,setIsLoading] = useState(false)
   const [postUrl,setPostUrl] =useState("")
-
   const form = useForm<Omit<Post, 'id' | "created_at" | "post_url">>({
     schema:yupResolver(schema),
     initialValues:{

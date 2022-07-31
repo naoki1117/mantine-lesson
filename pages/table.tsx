@@ -7,6 +7,7 @@ import useStore from "../store"
 import { useMutateTodo } from "../hooks/useMutateTodo"
 import { FormEvent } from "react"
 import { supabase } from "../utills/supabase"
+import { format } from "date-fns"
 
 const TableDemo = () => {
     const {deleteTodoMutation} = useMutateTodo()
@@ -33,7 +34,7 @@ const TableDemo = () => {
         <tr key={element.id}>
             <td>{element.id}</td>
             <td>{element.title}</td>
-            <td>{element.created_at}</td>
+            <td>{format (new Date(element.created_at),"yyyy-MM-dd HH:mm:ss")}</td>
         </tr>
     ))
     if (status === "loading")

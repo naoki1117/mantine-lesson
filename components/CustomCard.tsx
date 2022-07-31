@@ -1,6 +1,8 @@
 import { FC } from "react"
 import {Card,Image,Text,Badge,Button,Group } from "@mantine/core"
 import { supabase } from "../utills/supabase";
+import { useHover } from "@mantine/hooks"
+
 
 type Props = {
     title: string
@@ -17,18 +19,20 @@ export const CustomCard:FC<Props> = ({title,content,status,postUrl}) => {
     if(error) throw new Error(error.message)
     return data
   }
+  const {hovered, ref:refHover} = useHover()
 
 
   return (
 
-    <Card shadow="md">
+    <Card shadow="md" >
       <Card.Section>
         <Image 
             src={postUrl}
             height={160}
             alt="with default placeholder"
-            withPlaceholder      
-        />
+            withPlaceholder
+
+        />            
       </Card.Section>
       <Group position="apart" my="md">
         <Text weight={800}>{title}</Text>
